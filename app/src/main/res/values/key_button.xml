@@ -1,0 +1,12 @@
+<!-- res/values/styles.xml -->
+
+<resources>
+
+    <!-- Definiowanie stylu dla przycisku -->
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textSize">16sp</item>
+        <!-- Dodaj inne atrybuty stylu, jeśli są potrzebne -->
+    </style>
+
+</resources>

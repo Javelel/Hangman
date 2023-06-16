@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Hangman</string>
+    <string name="Random">RANDOM</string>
+</resources>
