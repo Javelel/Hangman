@@ -16,7 +16,7 @@ private lateinit var btnStart: Button
 		btnStart = findViewById(R.id.btnStart)
 
 		btnStart.setOnClickListener {
-			val intent = Intent(this, GameActivity::class.java)
+			val intent = Intent(this, ChooseWordActivity::class.java)
 			startActivity(intent)
 		}
 
