@@ -46,9 +46,9 @@ class GameManager {
 		return getGameState()
 	}
 
-	fun generateUnderscores(word: String) {
+	private fun generateUnderscores(word: String) {
 		val sb = StringBuilder()
-		word.forEach { char ->
+		word.forEach { _ ->
 			sb.append("_")
 		}
 		underscoreWord = sb.toString()

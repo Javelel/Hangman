@@ -9,11 +9,15 @@ import android.widget.TableLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.view.get
 
 private lateinit var chooseWordLayout : LinearLayout
 private lateinit var keyboardLayout : TableLayout
 private lateinit var chooseWordTV : TextView
 private lateinit var okBtn : AppCompatButton
+private lateinit var backspaceBtn : AppCompatImageButton
 
 class ChooseWordActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +39,17 @@ class ChooseWordActivity : AppCompatActivity() {
 		keyboardLayout = inflater.inflate(R.layout.keyboard, chooseWordLayout, false) as TableLayout
 		chooseWordLayout.addView(keyboardLayout)
 
+		backspaceBtn = keyboardLayout.findViewById(R.id.backspaceBtn)
+		backspaceBtn.isClickable = true
+		backspaceBtn.visibility = View.VISIBLE
+		backspaceBtn.setOnClickListener { deleteLastChar() }
 	}
 
+	private fun deleteLastChar() {
+		var currentText : String = chooseWordTV.text as String
+		currentText = currentText.dropLast(1)
+		chooseWordTV.text = currentText
+	}
 
 
 	fun keyClicked(view : View) {    // When clicked key on the keyboard

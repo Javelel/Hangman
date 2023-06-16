@@ -1,5 +1,6 @@
 package com.example.hangman
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,12 +15,13 @@ import androidx.core.content.ContextCompat
 
 class GameActivity : AppCompatActivity() {
 
-	private lateinit var wordTextView: TextView
-	private lateinit var imageView: ImageView
+	private lateinit var wordTextView : TextView
+	private lateinit var imageView : ImageView
 	private lateinit var gameLayout : LinearLayout
 	private lateinit var keyboardLayout : TableLayout
-	private lateinit var gameLostTextView: TextView
-	private lateinit var gameWonTextView: TextView
+	private lateinit var gameLostTextView : TextView
+	private lateinit var gameWonTextView : TextView
+	private lateinit var menuButton : AppCompatButton
 
 	private var wordToGuess : String = ""
 
@@ -35,6 +37,12 @@ class GameActivity : AppCompatActivity() {
 		gameWonTextView = findViewById(R.id.gameWonTV)
 		gameLostTextView = findViewById(R.id.gameLostTV)
 
+		menuButton = findViewById(R.id.menuBtn)
+		menuButton.setOnClickListener {
+			val intent = Intent(this, MainActivity::class.java)
+			startActivity(intent)
+		}
+
 		gameLayout = findViewById(R.id.gameLayout)  // adding keyboard
 		val inflater = LayoutInflater.from(this)
 		keyboardLayout = inflater.inflate(R.layout.keyboard, gameLayout, false) as TableLayout
@@ -44,19 +52,13 @@ class GameActivity : AppCompatActivity() {
 		updateUI(gameState)
 	}
 
-	fun keyClicked(view: View) {    // When clicked key on the keyboard
+	fun keyClicked(view : View) {    // When clicked key on the keyboard
 		val key : AppCompatButton = view as AppCompatButton
-		//val keyChar : String = key.text as String
-		//key.isClickable = false
-		/*if (wordToGuess.contains(keyChar))
-			key.setBackgroundColor(Color.GREEN)
-		else
-			key.setBackgroundColor(Color.RED)*/
 		val gameState = gameManager.play(key)
 		updateUI(gameState)
 	}
 
-	private fun updateUI(gameState: GameState) {
+	private fun updateUI(gameState : GameState) {
 		when (gameState) {
 			is GameState.Lost -> showGameLost(gameState.wordToGuess)
 			is GameState.Running -> {
@@ -67,17 +69,19 @@ class GameActivity : AppCompatActivity() {
 		}
 	}
 
-	private fun showGameLost(wordToGuess: String) {
+	private fun showGameLost(wordToGuess : String) {
 		wordTextView.text = wordToGuess
 		gameLostTextView.visibility = View.VISIBLE
 		imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.game7))
 		keyboardLayout.visibility = View.GONE
+		menuButton.visibility = View.VISIBLE
 	}
 
-	private fun showGameWon(wordToGuess: String) {
+	private fun showGameWon(wordToGuess : String) {
 		wordTextView.text = wordToGuess
 		gameWonTextView.visibility = View.VISIBLE
 		keyboardLayout.visibility = View.GONE
+		menuButton.visibility = View.VISIBLE
 	}
 
 }
