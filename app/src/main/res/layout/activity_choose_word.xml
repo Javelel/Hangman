@@ -14,6 +14,7 @@
         android:layout_weight="0.5"
         android:gravity="center"
         android:text="AAA"
+        android:textColor="@color/game_title"
         android:textSize="34sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,22 +22,30 @@
         android:layout_height="match_parent"
         android:layout_weight="0.9">
 
-        <Button
-            android:id="@+id/button2"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/randomWordBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:background="@drawable/normal_button_background"
+            android:paddingHorizontal="20dp"
+            android:stateListAnimator="@null"
             android:text="@string/Random"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/okBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
+            android:background="@drawable/normal_button_background"
+            android:paddingHorizontal="20dp"
+            android:stateListAnimator="@null"
             android:text="OK"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -25,7 +25,7 @@ class GameActivity : AppCompatActivity() {
 
 	private var wordToGuess : String = ""
 
-	private val gameManager = GameManager()
+	private val gameManager = GameManager(this)
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)

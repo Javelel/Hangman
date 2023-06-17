@@ -3,4 +3,6 @@
     <string name="Random">RANDOM</string>
     <string name="you_won">YOU WON</string>
     <string name="you_lost">YOU LOST</string>
+    <string name="play">PLAY</string>
+    <string name="mode">DAY/NIGHT</string>
 </resources>

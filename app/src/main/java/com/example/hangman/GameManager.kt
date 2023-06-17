@@ -1,10 +1,12 @@
 package com.example.hangman
 
+import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 
 
-class GameManager {
+class GameManager (private val context: Context){
 
 	private val maxTries = 7
 	private var currentTries = 0
@@ -14,8 +16,6 @@ class GameManager {
 
 	fun startNewGame(wordToGuess: String): GameState {
 		this.wordToGuess = wordToGuess
-		currentTries = 0
-		drawable = R.drawable.game7
 		generateUnderscores(this.wordToGuess)
 		return getGameState()
 	}
@@ -37,9 +37,9 @@ class GameManager {
 		}
 		if (indexes.isEmpty()) {
 			currentTries++
-			key.setBackgroundColor(Color.RED)
+			key.background = ContextCompat.getDrawable(context, R.drawable.key_button_background_red)//  setBackgroundColor(Color.RED)
 		} else {
-			key.setBackgroundColor(Color.GREEN)
+			key.background = ContextCompat.getDrawable(context, R.drawable.key_button_background_green)
 		}
 
 		underscoreWord = finalUnderscoreWord

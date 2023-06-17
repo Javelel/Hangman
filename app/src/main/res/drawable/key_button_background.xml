@@ -1,5 +1,3 @@
-<!-- res/drawable/button_background.xml -->
-
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Stan przycisku, gdy jest wciśnięty -->

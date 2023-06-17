@@ -7,17 +7,22 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TableLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.get
+import kotlin.random.Random
 
 private lateinit var chooseWordLayout : LinearLayout
 private lateinit var keyboardLayout : TableLayout
 private lateinit var chooseWordTV : TextView
 private lateinit var okBtn : AppCompatButton
 private lateinit var backspaceBtn : AppCompatImageButton
+private lateinit var randomWordButton: AppCompatButton
+
+private const val WORD_TO_SHORT : String = "Word must have at least 2 characters"
 
 class ChooseWordActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +34,22 @@ class ChooseWordActivity : AppCompatActivity() {
 
 		okBtn = findViewById(R.id.okBtn)
 		okBtn.setOnClickListener {
+			if (chooseWordTV.text.length < 2) {
+				Toast.makeText(this, WORD_TO_SHORT, Toast.LENGTH_LONG).show()
+			} else {
+				val intent = Intent(this, GameActivity::class.java)
+				intent.putExtra("0", chooseWordTV.text)
+				startActivity(intent)
+			}
+		}
+
+		randomWordButton = findViewById(R.id.randomWordBtn) // choosing random word
+		randomWordButton.setOnClickListener {
+			val fileReader = TextFileReader(this)
+			val wordsArray = fileReader.readTextFile(R.raw.words_en)
+			val randomIndex = Random.nextInt(0, wordsArray.size)
 			val intent = Intent(this, GameActivity::class.java)
-			intent.putExtra("0", chooseWordTV.text)
+			intent.putExtra("0", wordsArray[randomIndex])
 			startActivity(intent)
 		}
 
