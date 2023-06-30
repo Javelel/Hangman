@@ -15,16 +15,16 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.get
 import kotlin.random.Random
 
-private lateinit var chooseWordLayout : LinearLayout
-private lateinit var keyboardLayout : TableLayout
-private lateinit var chooseWordTV : TextView
-private lateinit var okBtn : AppCompatButton
-private lateinit var backspaceBtn : AppCompatImageButton
-private lateinit var randomWordButton: AppCompatButton
-
 private const val WORD_TO_SHORT : String = "Word must have at least 2 characters"
 
 class ChooseWordActivity : AppCompatActivity() {
+	private lateinit var chooseWordLayout : LinearLayout
+	private lateinit var keyboardLayout : TableLayout
+	private lateinit var chooseWordTV : TextView
+	private lateinit var okBtn : AppCompatButton
+	private lateinit var backspaceBtn : AppCompatImageButton
+	private lateinit var randomWordButton: AppCompatButton
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_choose_word)
